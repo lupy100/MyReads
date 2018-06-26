@@ -11,7 +11,7 @@ export default class Search extends Component {
   }
 
   handleChange = (query) => {
-    this.setState({ query: query.trim() });
+    this.setState({ query: query });
     if (query.trim().length > 0) {
       this.searchBook(query);
     }
@@ -52,7 +52,7 @@ export default class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
              {searchBooks.map(book =>
-              <Book key={book.id} book={book} title={book.title} authors={book.authors} coverUrl={book.imageLinks.smallThumbnail} />
+              <Book key={book.id} data={book} />
             )} 
           </ol>
         </div>

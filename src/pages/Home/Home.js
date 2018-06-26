@@ -65,17 +65,17 @@ class BooksApp extends Component {
           <div className="list-books-content">
             <Bookshelf title="Currently reading">
               {this.shelfFilfer("currentlyReading").map(book =>
-                <Book key={book.id} book={book} title={book.title} authors={book.authors} coverUrl={book.imageLinks.smallThumbnail} onChangeShelf={this.onChangeShelf} />
+                <Book key={book.id} data={book}  onChangeShelf={this.onChangeShelf} />
               )}
             </Bookshelf>
             <Bookshelf title="Want to read">
               {this.shelfFilfer("wantToRead").map(book =>
-                <Book key={book.id} book={book} title={book.title} authors={book.authors} coverUrl={book.imageLinks.smallThumbnail} onChangeShelf={this.onChangeShelf} />
+                <Book key={book.id} data={book} onChangeShelf={this.onChangeShelf} />
               )}
             </Bookshelf>
             <Bookshelf title="Read">
               {this.shelfFilfer("read").map(book =>
-                <Book key={book.id} book={book} title={book.title} authors={book.authors} coverUrl={book.imageLinks.smallThumbnail} onChangeShelf={this.onChangeShelf} />
+                <Book key={book.id} data={book}  onChangeShelf={this.onChangeShelf} />
               )}
             </Bookshelf>
           </div>
