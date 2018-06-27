@@ -50,5 +50,7 @@ ShelfSelect.propTypes = {
     text: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
   })).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+  book: PropTypes.object.isRequired,
 }
 export default ShelfSelect
