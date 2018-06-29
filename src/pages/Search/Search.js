@@ -27,7 +27,7 @@ class Search extends Component {
         if (!books || books.error) {
           this.setState({ searchBooks: [], error: books.error });
         } else {
-          
+
           books.map((searchbook) => {
             searchbook.shelf = 'none'
             this.props.books.map((book) => {
@@ -43,7 +43,8 @@ class Search extends Component {
   }
 
   render() {
-    const { query, searchBooks } = this.state
+    const { query, searchBooks, error } = this.state
+    const { onChangeShelf } = this.props
 
     return (
       <div className="search-books">
@@ -54,12 +55,12 @@ class Search extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.error !== '' ?
-            <ol className="books-grid">{this.state.error}</ol>
+          {error !== '' ?
+            <ol className="books-grid">{error}</ol>
             :
             <ol className="books-grid">
               {searchBooks.map(book =>
-                <Book key={book.id} data={book} onChangeShelf={this.props.onChangeShelf} />
+                <Book key={book.id} data={book} onChangeShelf={onChangeShelf} />
               )}
             </ol>
           }

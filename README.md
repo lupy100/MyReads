@@ -5,9 +5,6 @@
 
 Para testar o projeto entre no prompt de comando e digite:
 ```bash
-# Clone nosso repositório
-$ git clone https://github.com/lupy100/MyReads.git
-
 # Entre na pasta do repositório
 $ cd MyReads
 
