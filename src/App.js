@@ -15,35 +15,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll()
-      .then(data => {
-        this.setState({
-          books: data
-        })
-      })
+    this.getAllBooks()
   }
 
   onChangeShelf = (book, shelf) => {
-    const { books } = this.state;
-    const bookIndex = books.findIndex((key) => {
-      return key.id === book.id;
+    BooksAPI.update(book, shelf).then(() => {
+      this.getAllBooks()
     });
+  }
 
-    let stateBooks = books;
-
-    if (bookIndex === -1) {
-      const newBook = Object.assign({}, book);
-      newBook.shelf = shelf;
-      stateBooks.push(newBook);
-    } else {
-      stateBooks[bookIndex] = Object.assign({}, stateBooks[bookIndex]);
-      stateBooks[bookIndex].shelf = shelf;
-    }
-
-    BooksAPI.update(book, shelf)
-      .then(
-        this.setState({ books: stateBooks })
-      );
+  getAllBooks() {
+    BooksAPI.getAll().then(data => {
+      this.setState({
+        books: data
+      })
+    })
   }
 
   render() {

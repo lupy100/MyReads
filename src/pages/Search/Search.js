@@ -27,6 +27,16 @@ class Search extends Component {
         if (!books || books.error) {
           this.setState({ searchBooks: [], error: books.error });
         } else {
+          
+          books.map((searchbook) => {
+            searchbook.shelf = 'none'
+            this.props.books.map((book) => {
+              if (searchbook.id === book.id) {
+                searchbook.shelf = book.shelf
+              }
+            })
+          })
+
           this.setState({ searchBooks: books, error: '' })
         }
       })
@@ -34,17 +44,6 @@ class Search extends Component {
 
   render() {
     const { query, searchBooks } = this.state
-    const { books } = this.props
-    if (searchBooks) {
-      searchBooks.map((searchbook) => {
-        searchbook.shelf = 'none';
-        books.map((book) => {
-          if (searchbook.id === book.id) {
-            searchbook.shelf = book.shelf
-          }
-        })
-      })
-    }
 
     return (
       <div className="search-books">
