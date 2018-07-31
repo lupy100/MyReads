@@ -5,7 +5,7 @@ const ShelfSelect = ({ options, onChangeShelf, book }) => {
 
   return (
     <div className="book-shelf-changer">
-      <select value={book.shelf} onChange={e => onChangeShelf(book, e.target.value)}>
+      <select defaultValue={book.shelf} onChange={e => onChangeShelf(book, e.target.value)}>
         {options.map((option, i) =>
           <option key={i} value={option.value} disabled={option.disabled}>{option.text}</option>
         )}

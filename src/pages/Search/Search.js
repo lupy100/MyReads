@@ -30,11 +30,13 @@ class Search extends Component {
 
           books.map((searchbook) => {
             searchbook.shelf = 'none'
-            this.props.books.map((book) => {
-              if (searchbook.id === book.id) {
-                searchbook.shelf = book.shelf
-              }
-            })
+              this.props.books.map((book) => {
+                if (searchbook.id === book.id) {
+                  searchbook.shelf = book.shelf
+                }
+                  return book
+              })
+              return searchbook
           })
 
           this.setState({ searchBooks: books, error: '' })
